@@ -3,7 +3,7 @@ module.exports = new stream.Transform({
     /*** inside this transform `this` refers to the response stream ***/
     objectMode: true,
     transform: function(chunk, encoding, done){
-        if(chunk.constructor == String){
+        if(chunk.constructor != Object){
             // send strings as comments, used for heartbeat
             this.push(`:${chunk}\n\n`) 
         } else {
